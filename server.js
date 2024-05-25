@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));  // Para servir el index.html desde la carpeta public
+app.use(express.static('public'));  
 
 const pool = new Pool({
     host: process.env.DB_HOST,
@@ -15,7 +15,7 @@ const pool = new Pool({
     port: process.env.DB_PORT
 });
 
-// Ruta para agregar una canción
+
 app.post('/cancion', async (req, res) => {
     const { titulo, artista, tono } = req.body;
     try {
@@ -29,7 +29,7 @@ app.post('/cancion', async (req, res) => {
     }
 });
 
-// Ruta para obtener todas las canciones
+
 app.get('/canciones', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM canciones');
@@ -39,7 +39,7 @@ app.get('/canciones', async (req, res) => {
     }
 });
 
-// Ruta para actualizar una canción
+
 app.put('/cancion/:id', async (req, res) => {
     const { id } = req.params;
     const { titulo, artista, tono } = req.body;
@@ -54,7 +54,7 @@ app.put('/cancion/:id', async (req, res) => {
     }
 });
 
-// Ruta para eliminar una canción
+
 app.delete('/cancion', async (req, res) => {
     const { id } = req.query;
     try {
