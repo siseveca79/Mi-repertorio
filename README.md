@@ -8,3 +8,6 @@ npm install express pg body-parser
 
 node server.js
 
+# Ingresa tu musica favorita.
+
+![Captura de pantalla](./resultados.png)
